@@ -13,11 +13,14 @@ import {
 } from 'react-icons/hi';
 import { Button } from './ui/button';
 import { IProduct } from '@/types/globalTypes';
+import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hook';
 
 export default function Cart() {
   //! Dummy data
+  const { products } = useAppSelector((state) => state.cart);
 
-  const products: IProduct[] = [];
+  // const products: IProduct[] = [];
   const total = 0;
 
   //! **
@@ -35,7 +38,7 @@ export default function Cart() {
           <h1>Total: {total.toFixed(2)}</h1>
         </SheetHeader>
         <div className="space-y-5">
-          {products.map((product) => (
+          {products.map((product: IProduct) => (
             <div
               className="border h-44 p-5 flex justify-between rounded-md"
               key={product.name}
